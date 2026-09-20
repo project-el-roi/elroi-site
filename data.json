@@ -1,0 +1,28 @@
+{
+  "org": {
+    "contactEmail": "",
+    "contactPhone": "",
+    "contactNote": ""
+  },
+  "feeding": {
+    "date": "2026-09-16",
+    "children": 194,
+    "adults": 34,
+    "village": "Logoole",
+    "parish": "Kotido Rural Parish",
+    "municipality": "Kotido Municipality"
+  },
+  "cost": {
+    "perMealUgx": 1000,
+    "dailyUgx": 160000,
+    "poshoUgx": 2200,
+    "beansUgx": 4000,
+    "usdRate": 3650
+  },
+  "cumulative": {
+    "meals": 228,
+    "reports": 1
+  },
+  "photos": [],
+  "updated": "2026-09-20"
+}

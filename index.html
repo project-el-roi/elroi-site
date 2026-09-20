@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project El Roi &mdash; Logoole Village, Kotido</title>
+<meta name="description" content="A Ugandan-led hunger response in Logoole Village, Kotido. Every feeding recorded and dated.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E7E9E2; --panel:#F2F4EE; --ink:#171B17; --muted:#59605A;
+  --line:#CBD1C5; --ochre:#A9511B; --sky:#276278; --dust:#8A6B12;
+  --nodefill:#D9DED2;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#181C19; --panel:#1F241F; --ink:#E8EBE1; --muted:#959D91;
+    --line:#333A31; --ochre:#DD8038; --sky:#6FAEC4; --dust:#C9A43C;
+    --nodefill:#262C25;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181C19; --panel:#1F241F; --ink:#E8EBE1; --muted:#959D91;
+  --line:#333A31; --ochre:#DD8038; --sky:#6FAEC4; --dust:#C9A43C;
+  --nodefill:#262C25;
+}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+  font-size:18px; line-height:1.62; font-optical-sizing:auto;
+}
+h1,h2,h3,.sans,button,input,label,th{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+h1,h2,h3{line-height:1.08; letter-spacing:-0.022em; font-weight:800; margin:0}
+a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:var(--ochre)}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--ochre); outline-offset:3px}
+img{max-width:100%}
+.wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 22px}
+.col{max-width:66ch}
+.rule{border:0; border-top:1px solid var(--line); margin:0}
+
+/* header */
+.top{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:40;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex; align-items:center; gap:18px; height:62px}
+.mark{font-family:Archivo; font-weight:800; letter-spacing:-0.03em; font-size:19px; white-space:nowrap}
+.mark span{color:var(--ochre)}
+.topnav{margin-left:auto; display:flex; gap:20px; font-family:Archivo; font-weight:500; font-size:14.5px}
+.topnav a{text-decoration:none; color:var(--muted)}
+.topnav a:hover{color:var(--ink)}
+@media (max-width:720px){ .topnav{display:none} }
+
+/* hero as field record */
+.hero{padding:64px 0 52px}
+.stamp{
+  font-family:Archivo; font-weight:600; font-size:13px; letter-spacing:.04em;
+  color:var(--muted); display:flex; flex-wrap:wrap; gap:6px 14px; margin-bottom:26px;
+}
+.stamp b{font-weight:600; color:var(--ochre)}
+.lede{
+  font-family:Archivo; font-weight:800; letter-spacing:-0.028em;
+  font-size:clamp(34px,6.2vw,62px); line-height:1.02; margin:0 0 22px; max-width:15ch;
+}
+.lede em{font-style:normal; color:var(--ochre)}
+.sub{color:var(--muted); max-width:56ch; margin:0 0 30px}
+.meaning{
+  border-left:3px solid var(--ochre); padding:4px 0 4px 18px;
+  max-width:52ch; color:var(--ink); margin:0 0 32px;
+}
+.cta{display:flex; flex-wrap:wrap; gap:12px}
+.btn{
+  font-family:Archivo; font-weight:600; font-size:15px; padding:12px 20px;
+  border:1px solid var(--ink); background:var(--ink); color:var(--bg);
+  border-radius:2px; cursor:pointer; text-decoration:none; display:inline-block;
+}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn:hover{opacity:.88}
+
+/* ledger figures */
+.ledger{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:30px 0}
+.figs{display:grid; grid-template-columns:repeat(4,1fr); gap:28px}
+@media (max-width:820px){ .figs{grid-template-columns:repeat(2,1fr); gap:24px} }
+.fig .n{font-family:Archivo; font-weight:800; font-size:clamp(26px,3.4vw,38px); letter-spacing:-0.03em; font-variant-numeric:tabular-nums; line-height:1}
+.fig .l{font-family:Archivo; font-weight:500; font-size:13.5px; color:var(--muted); margin-top:8px; line-height:1.35}
+.fignote{font-size:14.5px; color:var(--muted); margin:22px 0 0; max-width:60ch}
+
+/* generic section */
+section{padding:66px 0}
+.kicker{font-family:Archivo; font-weight:600; font-size:14px; color:var(--ochre); margin:0 0 14px}
+h2{font-size:clamp(27px,3.8vw,40px); margin:0 0 20px}
+h3{font-size:19px; margin:0 0 8px; letter-spacing:-0.012em}
+p{margin:0 0 18px}
+.muted{color:var(--muted)}
+
+/* map */
+.mapsec{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.maptools{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 6px}
+.chip{
+  font-family:Archivo; font-weight:600; font-size:13.5px; padding:7px 14px;
+  border:1px solid var(--line); background:transparent; color:var(--muted);
+  border-radius:999px; cursor:pointer;
+}
+.chip:hover{color:var(--ink); border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.mapbox{margin:16px 0 0; overflow-x:auto; -webkit-overflow-scrolling:touch}
+svg.graph{display:block; width:100%; min-width:620px; height:auto}
+.node{cursor:pointer}
+.node circle{fill:var(--nodefill); stroke:var(--line); stroke-width:1.5; transition:stroke .18s,fill .18s}
+.node text{font-family:Archivo; font-weight:600; font-size:13px; fill:var(--ink); pointer-events:none}
+.node.k-live circle{stroke:var(--ochre); stroke-width:2.5}
+.node.k-root circle{stroke:var(--dust); stroke-width:2; stroke-dasharray:4 3}
+.node.sel circle{fill:var(--ochre); stroke:var(--ochre)}
+.node.sel text{fill:#fff}
+.edge{fill:none; stroke:var(--muted); stroke-width:1.3; opacity:.42; transition:opacity .18s,stroke .18s}
+.edge.in{stroke:var(--sky); opacity:1; stroke-width:2.2}
+.edge.out{stroke:var(--ochre); opacity:1; stroke-width:2.2}
+.dim{opacity:.13}
+.detail{margin:22px 0 0; border-top:1px solid var(--line); padding-top:22px; min-height:150px}
+.detail h3{margin-bottom:6px}
+.dgrid{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:18px}
+@media (max-width:760px){ .dgrid{grid-template-columns:1fr; gap:18px} }
+.dgrid h4{font-family:Archivo; font-size:13.5px; font-weight:600; margin:0 0 10px; color:var(--muted)}
+.dgrid ul{margin:0; padding-left:18px}
+.dgrid li{margin-bottom:9px; font-size:16.5px; line-height:1.5}
+.dgrid .arrow-in{color:var(--sky)}
+.dgrid .arrow-out{color:var(--ochre)}
+.legend{font-size:14.5px; color:var(--muted); margin:14px 0 0}
+
+/* initiatives */
+.inits{border-top:1px solid var(--line)}
+.init{
+  display:grid; grid-template-columns:1fr 250px; gap:26px;
+  padding:26px 0; border-bottom:1px solid var(--line); align-items:start;
+}
+@media (max-width:820px){ .init{grid-template-columns:1fr; gap:12px} }
+.init p{margin:0; font-size:16.5px; color:var(--muted)}
+.init h3{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.pill{
+  font-family:Archivo; font-weight:600; font-size:11.5px; padding:3px 10px;
+  border-radius:999px; border:1px solid currentColor; white-space:nowrap;
+}
+.pill.running{color:var(--ochre)}
+.pill.starting{color:var(--sky)}
+.pill.planned{color:var(--muted)}
+.need{font-family:Archivo; font-size:14px; color:var(--ink); font-weight:500; line-height:1.45}
+.need b{font-weight:600; font-variant-numeric:tabular-nums}
+
+/* calculator */
+.calc{background:var(--panel); border:1px solid var(--line); padding:28px; border-radius:3px; max-width:560px}
+.calc label{display:block; font-family:Archivo; font-size:14px; font-weight:500; color:var(--muted); margin-bottom:12px}
+.calc input[type=range]{width:100%; accent-color:var(--ochre)}
+.calcout{font-family:Archivo; font-weight:800; font-size:clamp(24px,4vw,34px); letter-spacing:-0.03em; margin:18px 0 6px; line-height:1.15}
+.calcout b{color:var(--ochre); font-variant-numeric:tabular-nums}
+.calcnote{font-size:14.5px; color:var(--muted); margin:0}
+
+/* photos */
+.shots{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:22px; margin-top:28px}
+.shot{margin:0}
+.shot img{
+  width:100%; height:auto; display:block; border-radius:3px;
+  border:1px solid var(--line); background:var(--panel);
+}
+.shot figcaption{font-size:15px; color:var(--muted); margin-top:10px; line-height:1.45}
+.shot .when{font-family:Archivo; font-weight:600; font-size:12.5px; color:var(--ochre); display:block}
+
+/* giving */
+.give .col{max-width:64ch}
+.plain{border:1px solid var(--line); padding:26px; border-radius:3px; margin:26px 0 0}
+.plain h3{margin-bottom:12px}
+.plain dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:10px 20px; font-size:16.5px}
+.plain dt{font-family:Archivo; font-size:14px; font-weight:600; color:var(--muted); padding-top:3px}
+.plain dd{margin:0}
+.honest{border-left:3px solid var(--dust); padding-left:18px; margin:26px 0 0; font-size:16.5px}
+
+footer{border-top:1px solid var(--line); padding:44px 0 70px; font-size:15px; color:var(--muted)}
+footer p{margin:0 0 10px; max-width:62ch}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none !important; animation:none !important} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">Project El <span>Roi</span></div>
+    <nav class="topnav">
+      <a href="#record">The record</a>
+      <a href="#map">How it connects</a>
+      <a href="#work">The work</a>
+      <a href="#give">Give</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap hero">
+  <div class="stamp">
+    <span>Logoole Village</span>
+    <span>Kotido Rural Parish</span>
+    <span>Kotido Municipality, Karamoja</span>
+    <span><b id="stamp-date">16 September 2026</b></span>
+  </div>
+  <h1 class="lede">On the last recorded day, <em id="hero-total">228</em> people in Logoole ate.</h1>
+  <p class="sub" id="hero-break"><span id="hero-children">194</span> children and <span id="hero-adults">34</span> adults, cooked in one homestead and served in one sitting. That is the whole of the response so far, and we would rather show it at that size than dress it up.</p>
+  <p class="meaning">El Roi is the name Hagar gave God in the desert: the God who sees me. Karamoja is a place the rest of the country forgets between droughts. The point of this project is to be a record that somebody is watching.</p>
+  <div class="cta">
+    <a class="btn" href="#give">How to give</a>
+    <a class="btn ghost" href="#map">See how the problems feed each other</a>
+  </div>
+</div>
+
+<div class="wrap ledger" id="record">
+  <div class="figs">
+    <div class="fig"><div class="n" id="f-meals">228</div><div class="l">Meals recorded, all reports to date</div></div>
+    <div class="fig"><div class="n" id="f-cost">1,000</div><div class="l">Shillings to feed one person once</div></div>
+    <div class="fig"><div class="n" id="f-usd">27c</div><div class="l">The same meal in US cents</div></div>
+    <div class="fig"><div class="n" id="f-reports">1</div><div class="l">Feeding reports filed from the ground</div></div>
+  </div>
+  <p class="fignote">These figures come from written feeding reports sent by the pastor who runs the kitchen, not from estimates. When a number here is small, it is because the work is young, not because the reporting is thin. Last updated <span id="f-updated">20 September 2026</span>.</p>
+</div>
+
+<section class="wrap">
+  <div class="col">
+    <p class="kicker">Why now</p>
+    <h2>The dry season is arriving early and El Ni&ntilde;o is arriving behind it.</h2>
+    <p>Karamoja, in Uganda's far northeast, is semi-arid and agro-pastoralist: families live off what they plant at the rains and what their herds survive. When the rains fail, both fail together. Hunger in the region has repeatedly peaked during drought, and an El Ni&ntilde;o cycle on top of a poor harvest compounds it &mdash; the World Food Programme has reported on this pattern in Karamoja directly.</p>
+    <p>What that means in Logoole is narrower and more immediate: households run out of food before the next planting, eat their seed stock to survive, and then have nothing to sow when the rain does come. That is the loop this project is trying to interrupt.</p>
+    <p><a href="https://www.wfp.org/stories/drought-ugandas-karamoja-region-hunger-peaks-el-nino-arrives" target="_blank" rel="noopener">Read the WFP report on drought and hunger in Karamoja</a></p>
+  </div>
+</section>
+
+<section class="mapsec" id="map">
+  <div class="wrap">
+    <p class="kicker">How it connects</p>
+    <h2>None of these is one problem.</h2>
+    <p class="col muted">A child out of school in Logoole is usually not a school problem. Tap any circle to see what drives it and what it drives. Blue arrows point at it; orange arrows point away from it.</p>
+
+    <div class="maptools">
+      <button class="chip" id="cycle-btn" aria-pressed="false">Trace the cycle that repeats</button>
+      <button class="chip" id="reset-btn">Show everything</button>
+    </div>
+
+    <div class="mapbox">
+      <svg class="graph" id="graph" viewBox="0 0 920 660" role="img" aria-label="Diagram of how drought, hunger, water, schooling, health, clothing, seed, early motherhood and livelihood skills drive one another in Logoole Village">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,1 L9,5 L0,9 z" fill="context-stroke"></path>
+          </marker>
+        </defs>
+        <g id="edges"></g>
+        <g id="nodes"></g>
+      </svg>
+    </div>
+    <p class="legend">A dashed circle is a condition nobody here can switch off. A solid orange circle is something Project El Roi is already doing something about.</p>
+
+    <div class="detail" id="detail"></div>
+  </div>
+</section>
+
+<section class="wrap" id="work">
+  <p class="kicker">The work</p>
+  <h2>Two things running, seven things named and not yet started.</h2>
+  <p class="col muted">Listing the unstarted ones is deliberate. A plan that only shows its successes is not a plan, and the gaps are where the money would actually go next.</p>
+  <div class="inits" id="inits"></div>
+</section>
+
+<section class="wrap">
+  <p class="kicker">What a gift buys</p>
+  <h2>The arithmetic is small and it is public.</h2>
+  <div class="calc">
+    <label for="amt">Move the slider to see what an amount covers at today's local food prices.</label>
+    <input type="range" id="amt" min="5" max="500" step="5" value="50">
+    <p class="calcout"><b id="calc-usd">$50</b> covers <b id="calc-meals">182</b> meals</p>
+    <p class="calcnote" id="calc-note">About <span id="calc-days">1</span> day of feeding at the current scale. Based on posho at <span id="calc-posho">2,200</span> and beans at <span id="calc-beans">4,000</span> shillings a kilo, and an exchange rate of <span id="calc-rate">3,650</span> shillings to the dollar. Prices move; this page moves with them.</p>
+  </div>
+</section>
+
+<section class="wrap" id="photos" hidden>
+  <p class="kicker">From the ground</p>
+  <h2>Photographs sent back from the feedings.</h2>
+  <p class="col muted">Taken in Logoole on the days named. Nothing here is stock, staged or bought.</p>
+  <div class="shots" id="shots"></div>
+</section>
+
+<section class="wrap give" id="give">
+  <div class="col">
+    <p class="kicker">Giving</p>
+    <h2>We are not taking card payments yet, and here is why.</h2>
+    <p>Right now, support reaches Logoole as mobile money sent to the pastor, who buys posho and beans at the local market, cooks, serves, and writes up a feeding report. It works, it is fast, and it is how 228 people ate on the last recorded day.</p>
+    <p>What it is not, yet, is a system a stranger should wire money into. There is no registered account, no independent bookkeeping, and no audited trail of daily giving. Putting a donate button on this page before that exists would be asking for trust we have not built. So the button is not here.</p>
+
+    <div class="plain">
+      <h3>To give now, talk to a person</h3>
+      <dl>
+        <dt>Email</dt><dd id="give-email">Contact details are being added here.</dd>
+        <dt>Phone</dt><dd id="give-phone">Contact details are being added here.</dd>
+        <dt>Based</dt><dd id="give-note">Partners in Uganda, the United States and Canada.</dd>
+      </dl>
+    </div>
+
+    <p class="honest">What we are building before we ask publicly: an account the project holds rather than a person, a second signature on every withdrawal, and a published monthly statement set against these feeding reports. When those three exist, this section changes and you will be able to see the date it changed.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Project El Roi</b> &mdash; Logoole Village, Kotido Rural Parish, Kotido Municipality, Karamoja, Uganda.</p>
+    <p>Ugandans doing for Ugandans. Figures on this page are drawn from dated feeding reports filed from the ground and are updated as new reports arrive.</p>
+  </div>
+</footer>
+
+<script type="application/json" id="elroi-data">{"org":{"contactEmail":"","contactPhone":"","contactNote":""},"feeding":{"date":"2026-09-16","children":194,"adults":34,"village":"Logoole","parish":"Kotido Rural Parish","municipality":"Kotido Municipality"},"cost":{"perMealUgx":1000,"dailyUgx":160000,"poshoUgx":2200,"beansUgx":4000,"usdRate":3650},"cumulative":{"meals":228,"reports":1},"photos":[],"updated":"2026-09-20"}</script>
+<script>
+(function(){
+"use strict";
+
+var DATA = JSON.parse(document.getElementById("elroi-data").textContent);
+
+/* ---------- helpers ---------- */
+function n(x){ return Number(x)||0; }
+function fmt(x){ return n(x).toLocaleString("en-US"); }
+function el(id){ return document.getElementById(id); }
+function setText(id,v){ var e=el(id); if(e) e.textContent=v; }
+function prettyDate(iso){
+  var p=String(iso||"").split("-"); if(p.length!==3) return String(iso||"");
+  var m=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var mi=parseInt(p[1],10)-1;
+  return parseInt(p[2],10)+" "+(m[mi]||"")+" "+p[0];
+}
+
+/* ---------- graph model ---------- */
+var NODES=[
+ {id:"drought",  x:460,y:66,  r:46, kind:"root", label:["Drought"],
+  title:"Drought and a failing rain cycle",
+  body:"Karamoja is semi-arid. Families live off one planting season and a herd. When the rain comes late or thin, both the field and the herd fail in the same month. Nobody in Logoole can fix this one; everything below it is what it does on the way down.",
+  doing:""},
+ {id:"hunger",   x:460,y:250, r:58, kind:"live", label:["Hunger"],
+  title:"Hunger",
+  body:"The primary response. One cooked meal of posho and beans, served daily from the pastor's homestead, with a written report after each feeding.",
+  doing:"Running now. Roughly 1,000 shillings feeds one person one meal. The nearest goal is a second meal a day so that children in school are not choosing between class and eating."},
+ {id:"education",x:770,y:238, r:50, kind:"live", label:["School"],
+  title:"Getting children into school and keeping them there",
+  body:"Government schooling is free, but a child cannot attend without a uniform, shoes, exercise books, pens and a mathematics set. That gap is roughly 50,000 shillings per child.",
+  doing:"Starting. Polaris Junior School and Olive School are buying materials and sending them to the pastor for named families. The missing piece is a check-in with each family so enrolment is followed, not just funded."},
+ {id:"water",    x:150,y:232, r:40, kind:"planned", label:["Clean","water"],
+  title:"Clean drinking water",
+  body:"When surface water dries up, households take what they can get and walk further for it. Both halves of that cost something: illness from the water, and hours from the day.",
+  doing:"Named, not started."},
+ {id:"seeds",    x:132,y:452, r:38, kind:"planned", label:["Seed"],
+  title:"Seed for the planting season",
+  body:"A household with nothing to eat in August eats the seed it was keeping for the rains. The shortage then repeats itself next year with no drought required.",
+  doing:"Named, not started. This is the one item on the list that ends a cycle rather than easing it."},
+ {id:"health",   x:300,y:500, r:40, kind:"planned", label:["Clinic"],
+  title:"Immunisation, hygiene and basic care",
+  body:"Malnourished children catch what is going around and keep it longer. Routine illness becomes dangerous, and weeks of school disappear into it.",
+  doing:"Named, not started."},
+ {id:"clothes",  x:636,y:470, r:36, kind:"planned", label:["Clothes"],
+  title:"Clothing and school uniform",
+  body:"Clothing reads as the softest item on this list until you notice it is a hard gate on school attendance.",
+  doing:"Named, not started."},
+ {id:"maternal", x:448,y:588, r:40, kind:"planned", label:["Young","mothers"],
+  title:"Support for young mothers and infants",
+  body:"Girls who leave school early tend to marry and give birth early. A young mother with no income has an infant to feed and nothing to feed it with.",
+  doing:"Named, not started."},
+ {id:"skills",   x:792,y:480, r:38, kind:"planned", label:["Skills"],
+  title:"Skills and livelihood training",
+  body:"Without a trade, a household stays dependent on whatever food arrives. Training is how a family stops being a beneficiary.",
+  doing:"Named, not started."}
+];
+
+var EDGES=[
+ {f:"drought",  t:"hunger",   k:0.00, w:"Crops fail and herds thin, so there is nothing to harvest and nothing to sell."},
+ {f:"drought",  t:"water",    k:0.10, w:"Streams and shallow sources dry up, and the walk for water gets longer."},
+ {f:"drought",  t:"seeds",    k:-0.12,w:"Households eat the seed they were keeping, because it is food and they are hungry now."},
+ {f:"seeds",    t:"hunger",   k:0.12, w:"No seed at the rains means no harvest next season, so the shortage repeats."},
+ {f:"water",    t:"health",   k:0.10, w:"Unsafe water brings diarrhoeal illness, which is worst in the smallest children."},
+ {f:"water",    t:"education",k:0.36, w:"Hours spent fetching water are hours out of class, and that cost falls mostly on girls."},
+ {f:"hunger",   t:"education",k:-0.14,w:"A hungry child cannot concentrate, and older children leave school to go looking for food."},
+ {f:"hunger",   t:"health",   k:0.12, w:"Malnutrition lowers immunity, so ordinary illness turns dangerous."},
+ {f:"health",   t:"education",k:0.14, w:"A sick child misses weeks and falls behind far enough to stop coming."},
+ {f:"clothes",  t:"education",k:0.12, w:"Government school is free, but a child with no uniform or shoes is turned away at the gate."},
+ {f:"education",t:"maternal", k:0.16, w:"Girls out of school marry and give birth early, often before eighteen."},
+ {f:"maternal", t:"hunger",   k:0.16, w:"A young mother with no income cannot feed her infant or herself."},
+ {f:"education",t:"skills",   k:0.14, w:"Leaving school early means no trade and no way to earn."},
+ {f:"skills",   t:"hunger",   k:0.14, w:"With no livelihood, the household stays dependent on whatever food arrives."}
+];
+
+var CYCLE=[["hunger","education"],["education","skills"],["skills","hunger"]];
+var byId={}; NODES.forEach(function(d){ byId[d.id]=d; });
+
+/* ---------- draw ---------- */
+var SVGNS="http://www.w3.org/2000/svg";
+var gE=el("edges"), gN=el("nodes");
+
+function edgePath(a,b,k){
+  var dx=b.x-a.x, dy=b.y-a.y, L=Math.sqrt(dx*dx+dy*dy)||1;
+  var ux=dx/L, uy=dy/L, px=-uy, py=ux;
+  var mx=(a.x+b.x)/2 + px*k*L, my=(a.y+b.y)/2 + py*k*L;
+  function trim(p,cx,cy,rad,sign){
+    var vx=cx-p.x, vy=cy-p.y, l=Math.sqrt(vx*vx+vy*vy)||1;
+    return {x:p.x+vx/l*rad*sign, y:p.y+vy/l*rad*sign};
+  }
+  var s=trim(a,mx,my,a.r,1);
+  var e=trim(b,mx,my,b.r+9,1);
+  return "M"+s.x.toFixed(1)+","+s.y.toFixed(1)+" Q"+mx.toFixed(1)+","+my.toFixed(1)+" "+e.x.toFixed(1)+","+e.y.toFixed(1);
+}
+
+EDGES.forEach(function(ed,i){
+  var a=byId[ed.f], b=byId[ed.t];
+  var p=document.createElementNS(SVGNS,"path");
+  p.setAttribute("d",edgePath(a,b,ed.k));
+  p.setAttribute("class","edge");
+  p.setAttribute("marker-end","url(#ah)");
+  p.setAttribute("data-f",ed.f); p.setAttribute("data-t",ed.t); p.setAttribute("data-i",i);
+  gE.appendChild(p);
+});
+
+NODES.forEach(function(d){
+  var g=document.createElementNS(SVGNS,"g");
+  g.setAttribute("class","node k-"+d.kind);
+  g.setAttribute("data-id",d.id);
+  g.setAttribute("tabindex","0");
+  g.setAttribute("role","button");
+  g.setAttribute("aria-label",d.title);
+  var c=document.createElementNS(SVGNS,"circle");
+  c.setAttribute("cx",d.x); c.setAttribute("cy",d.y); c.setAttribute("r",d.r);
+  g.appendChild(c);
+  var lines=d.label, start=d.y - ((lines.length-1)*8);
+  lines.forEach(function(t,i){
+    var tx=document.createElementNS(SVGNS,"text");
+    tx.setAttribute("x",d.x); tx.setAttribute("y",start+i*16+5);
+    tx.setAttribute("text-anchor","middle");
+    tx.textContent=t;
+    g.appendChild(tx);
+  });
+  g.addEventListener("click",function(){ select(d.id); });
+  g.addEventListener("keydown",function(ev){
+    if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); select(d.id); }
+  });
+  gN.appendChild(g);
+});
+
+var paths=Array.prototype.slice.call(gE.children);
+var groups=Array.prototype.slice.call(gN.children);
+var current=null;
+
+function clearMarks(){
+  paths.forEach(function(p){ p.classList.remove("in","out","dim"); });
+  groups.forEach(function(g){ g.classList.remove("sel","dim"); });
+  el("cycle-btn").setAttribute("aria-pressed","false");
+}
+
+function select(id){
+  current=id; clearMarks();
+  var inc=[], out=[];
+  paths.forEach(function(p){
+    var f=p.getAttribute("data-f"), t=p.getAttribute("data-t"), i=+p.getAttribute("data-i");
+    if(t===id){ p.classList.add("in"); inc.push(EDGES[i]); }
+    else if(f===id){ p.classList.add("out"); out.push(EDGES[i]); }
+    else p.classList.add("dim");
+  });
+  var touched={}; touched[id]=1;
+  inc.forEach(function(e){ touched[e.f]=1; }); out.forEach(function(e){ touched[e.t]=1; });
+  groups.forEach(function(g){
+    var gid=g.getAttribute("data-id");
+    if(gid===id) g.classList.add("sel");
+    else if(!touched[gid]) g.classList.add("dim");
+  });
+  renderDetail(byId[id], inc, out);
+}
+
+function li(items, cls){
+  if(!items.length) return '<li class="muted">Nothing on this diagram.</li>';
+  return items.map(function(x){ return '<li><span class="'+cls+'">'+x.a+'</span> '+x.b+'</li>'; }).join("");
+}
+
+function renderDetail(d, inc, out){
+  var incItems=inc.map(function(e){ return {a:byId[e.f].label.join(" ")+":", b:e.w}; });
+  var outItems=out.map(function(e){ return {a:byId[e.t].label.join(" ")+":", b:e.w}; });
+  var doing = d.doing ? '<p class="muted" style="margin-top:14px">'+d.doing+'</p>' : "";
+  el("detail").innerHTML =
+    '<h3>'+d.title+'</h3>'+
+    '<p class="muted" style="max-width:64ch">'+d.body+'</p>'+ doing +
+    '<div class="dgrid">'+
+      '<div><h4>What makes this worse</h4><ul>'+li(incItems,"arrow-in")+'</ul></div>'+
+      '<div><h4>What this makes worse</h4><ul>'+li(outItems,"arrow-out")+'</ul></div>'+
+    '</div>';
+}
+
+function showAll(){
+  current=null; clearMarks();
+  el("detail").innerHTML =
+    '<h3>Start anywhere and you arrive back at hunger</h3>'+
+    '<p class="muted" style="max-width:64ch">Fourteen arrows, nine circles, and only one of them is a thing nobody can change. '+
+    'Tap a circle to follow it, or trace the loop that keeps closing on itself.</p>';
+}
+
+el("reset-btn").addEventListener("click", showAll);
+
+el("cycle-btn").addEventListener("click", function(){
+  var on = this.getAttribute("aria-pressed")==="true";
+  if(on){ showAll(); return; }
+  clearMarks();
+  var keep={};
+  CYCLE.forEach(function(pair){ keep[pair[0]+">"+pair[1]]=1; keep[pair[0]]=1; keep[pair[1]]=1; });
+  paths.forEach(function(p){
+    var key=p.getAttribute("data-f")+">"+p.getAttribute("data-t");
+    if(keep[key]) p.classList.add("out"); else p.classList.add("dim");
+  });
+  groups.forEach(function(g){ if(!keep[g.getAttribute("data-id")]) g.classList.add("dim"); });
+  this.setAttribute("aria-pressed","true");
+  el("detail").innerHTML =
+    '<h3>The loop that closes on itself</h3>'+
+    '<p class="muted" style="max-width:64ch">Hunger takes children out of school. Children out of school reach adulthood with no trade. '+
+    'Adults with no trade cannot buy food, so the household is hungry again and the next child leaves school. '+
+    'Feeding people interrupts this loop for a day. Schooling and skills are what break it, which is why they are on the list '+
+    'even while the kitchen is the urgent thing.</p>';
+});
+
+/* ---------- initiatives ---------- */
+var INITS=[
+ {t:"Food for the community",s:"running",
+  d:"One cooked meal of posho and beans a day, served from the pastor's homestead, with a written report after each feeding.",
+  need:"Next step: a second daily meal, which means roughly <b>400,000</b> shillings a day rather than 160,000."},
+ {t:"Education support",s:"starting",
+  d:"Uniform, shoes, exercise books, pens and a mathematics set, so a child can take up the free government school place they already have.",
+  need:"About <b>50,000</b> shillings per child, plus somebody whose job is following up with each family."},
+ {t:"Clean drinking water",s:"planned",
+  d:"Safe water for drinking, and less of the day spent walking to fetch it.",
+  need:"Not yet costed."},
+ {t:"Seed for the planting season",s:"planned",
+  d:"Seed delivered before the rains, so households are not eating what they meant to sow.",
+  need:"Not yet costed. Seasonal, so it has a deadline the others do not."},
+ {t:"Medical clinic",s:"planned",
+  d:"Immunisation, hygiene and basic treatment, with the malnourished children first.",
+  need:"Not yet costed."},
+ {t:"Support for young mothers",s:"planned",
+  d:"Infant supplies and practical support for mothers who are often still teenagers.",
+  need:"Not yet costed."},
+ {t:"Skills training for young mothers",s:"planned",
+  d:"A trade, so a household earns rather than waits.",
+  need:"Not yet costed."},
+ {t:"Clothing",s:"planned",
+  d:"Everyday clothing, and the uniform that decides whether a child is let into class.",
+  need:"Not yet costed."}
+];
+var LABEL={running:"Running",starting:"Starting",planned:"Not started"};
+el("inits").innerHTML = INITS.map(function(i){
+  return '<div class="init"><div><h3>'+i.t+' <span class="pill '+i.s+'">'+LABEL[i.s]+'</span></h3>'+
+         '<p>'+i.d+'</p></div><div class="need">'+i.need+'</div></div>';
+}).join("");
+
+/* ---------- render figures ---------- */
+function render(){
+  var f=DATA.feeding, c=DATA.cost, cu=DATA.cumulative;
+  var total=n(f.children)+n(f.adults);
+  setText("stamp-date", prettyDate(f.date));
+  setText("hero-total", fmt(total));
+  setText("hero-children", fmt(f.children));
+  setText("hero-adults", fmt(f.adults));
+  setText("f-meals", fmt(cu.meals));
+  setText("f-cost", fmt(c.perMealUgx));
+  var cents=Math.round(n(c.perMealUgx)/n(c.usdRate)*100);
+  setText("f-usd", cents+"c");
+  setText("f-reports", fmt(cu.reports));
+  setText("f-updated", prettyDate(DATA.updated));
+  setText("calc-posho", fmt(c.poshoUgx));
+  setText("calc-beans", fmt(c.beansUgx));
+  setText("calc-rate", fmt(c.usdRate));
+  var em=el("give-email"), ph=el("give-phone");
+  if(DATA.org.contactEmail){ em.innerHTML='<a href="mailto:'+DATA.org.contactEmail+'">'+DATA.org.contactEmail+'</a>'; }
+  else { em.textContent="Contact details are being added here."; }
+  ph.textContent = DATA.org.contactPhone || "Contact details are being added here.";
+  renderPhotos();
+  calc();
+}
+
+function esc(s){
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function renderPhotos(){
+  var list=(DATA.photos||[]), sec=el("photos");
+  if(!list.length){ sec.hidden=true; el("shots").innerHTML=""; return; }
+  sec.hidden=false;
+  el("shots").innerHTML=list.map(function(p){
+    var when=p.date ? '<span class="when">'+esc(prettyDate(p.date))+'</span>' : "";
+    var cap=p.caption ? esc(p.caption) : "";
+    var fig=(when||cap) ? '<figcaption>'+when+cap+'</figcaption>' : "";
+    return '<figure class="shot"><img loading="lazy" alt="'+esc(p.caption||"A feeding day in Logoole Village")+
+           '" src="'+p.src+'">'+fig+'</figure>';
+  }).join("");
+}
+
+function calc(){
+  var usd=n(el("amt").value), c=DATA.cost;
+  var meals=Math.floor(usd*n(c.usdRate)/n(c.perMealUgx));
+  var perDay=n(c.dailyUgx)/n(c.perMealUgx);
+  var days=perDay>0 ? (meals/perDay) : 0;
+  setText("calc-usd","$"+fmt(usd));
+  setText("calc-meals",fmt(meals));
+  setText("calc-days", days<1 ? days.toFixed(1) : fmt(Math.round(days)));
+}
+el("amt").addEventListener("input",calc);
+
+render();
+showAll();
+
+/* ---------- live figures ---------- */
+/* Everything the site shows comes from data.json, sitting next to this file.
+   Edit that file to update the page. The values baked in above are only a
+   fallback for the case where data.json cannot be loaded. */
+fetch("data.json", {cache:"no-store"})
+  .then(function(r){ return r.ok ? r.json() : null; })
+  .then(function(d){
+    if(d && typeof d === "object"){
+      DATA = Object.assign({}, DATA, d);
+      render();
+    }
+  })
+  .catch(function(){ /* keep the baked-in figures */ });
+
+})();
+</script>
+</body>
+</html>
