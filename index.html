@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Project El Roi &mdash; Logoole Village, Kotido</title>
-<meta name="description" content="A Ugandan-led hunger response in Logoole Village, Kotido. Every feeding recorded and dated.">
+<title>Project El Roi &mdash; God sees, we act</title>
+<meta name="description" content="God sees, we act. A Ugandan-led hunger response in Logoole Village, Kotido. Every feeding recorded and dated.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#E7E9E2; --panel:#F2F4EE; --ink:#171B17; --muted:#59605A;
-  --line:#CBD1C5; --ochre:#A9511B; --sky:#276278; --dust:#8A6B12;
-  --nodefill:#D9DED2;
+  --bg:#F7F2E9; --panel:#FDFAF4; --ink:#1A1F22; --muted:#5E6164;
+  --line:#E0D7C7; --ochre:#C2410C; --sky:#0E6A7D; --dust:#8A6B12;
+  --nodefill:#EDE5D6;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -20,15 +20,15 @@
 *,*::before,*::after{box-sizing:inherit}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#181C19; --panel:#1F241F; --ink:#E8EBE1; --muted:#959D91;
-    --line:#333A31; --ochre:#DD8038; --sky:#6FAEC4; --dust:#C9A43C;
-    --nodefill:#262C25;
+    --bg:#1B1714; --panel:#241F1A; --ink:#F3ECE1; --muted:#A3968A;
+    --line:#382F27; --ochre:#F0763C; --sky:#5FB2C8; --dust:#D9A63C;
+    --nodefill:#2C2521;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#181C19; --panel:#1F241F; --ink:#E8EBE1; --muted:#959D91;
-  --line:#333A31; --ochre:#DD8038; --sky:#6FAEC4; --dust:#C9A43C;
-  --nodefill:#262C25;
+  --bg:#1B1714; --panel:#241F1A; --ink:#F3ECE1; --muted:#A3968A;
+  --line:#382F27; --ochre:#F0763C; --sky:#5FB2C8; --dust:#D9A63C;
+  --nodefill:#2C2521;
 }
 html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
 body{
@@ -40,6 +40,7 @@ h1,h2,h3,.sans,button,input,label,th{font-family:Archivo,"Helvetica Neue",Arial,
 h1,h2,h3{line-height:1.08; letter-spacing:-0.022em; font-weight:800; margin:0}
 a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:var(--ochre)}
 a:hover{text-decoration-color:currentColor}
+main p a, .plain dd a{color:var(--sky); text-decoration-color:var(--sky)}
 :focus-visible{outline:2px solid var(--ochre); outline-offset:3px}
 img{max-width:100%}
 .wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 22px}
@@ -55,10 +56,18 @@ img{max-width:100%}
 .top .wrap{display:flex; align-items:center; gap:18px; height:62px}
 .mark{font-family:Archivo; font-weight:800; letter-spacing:-0.03em; font-size:19px; white-space:nowrap}
 .mark span{color:var(--ochre)}
+.tag{
+  font-family:Archivo; font-weight:500; font-size:14px; color:var(--muted);
+  padding-left:18px; border-left:1px solid var(--line); white-space:nowrap;
+}
+@media (max-width:860px){ .tag{display:none} }
 .topnav{margin-left:auto; display:flex; gap:20px; font-family:Archivo; font-weight:500; font-size:14.5px}
 .topnav a{text-decoration:none; color:var(--muted)}
 .topnav a:hover{color:var(--ink)}
-@media (max-width:720px){ .topnav{display:none} }
+@media (max-width:720px){
+  .topnav a{display:none}
+  .topnav a.keep{display:inline-block; color:var(--ochre); font-weight:600}
+}
 
 /* hero as field record */
 .hero{padding:64px 0 52px}
@@ -73,8 +82,14 @@ img{max-width:100%}
 }
 .lede em{font-style:normal; color:var(--ochre)}
 .sub{color:var(--muted); max-width:56ch; margin:0 0 30px}
+.creed{
+  font-family:Archivo; font-weight:800; letter-spacing:-0.02em;
+  font-size:clamp(20px,2.6vw,26px); color:var(--ochre);
+  margin:0 0 32px; line-height:1.15;
+}
+.creed span{color:var(--sky)}
 .meaning{
-  border-left:3px solid var(--ochre); padding:4px 0 4px 18px;
+  border-left:3px solid var(--sky); padding:4px 0 4px 18px;
   max-width:52ch; color:var(--ink); margin:0 0 32px;
 }
 .cta{display:flex; flex-wrap:wrap; gap:12px}
@@ -97,6 +112,7 @@ img{max-width:100%}
 /* generic section */
 section{padding:66px 0}
 .kicker{font-family:Archivo; font-weight:600; font-size:14px; color:var(--ochre); margin:0 0 14px}
+.kicker.info{color:var(--sky)}
 h2{font-size:clamp(27px,3.8vw,40px); margin:0 0 20px}
 h3{font-size:19px; margin:0 0 8px; letter-spacing:-0.012em}
 p{margin:0 0 18px}
@@ -113,14 +129,16 @@ p{margin:0 0 18px}
 .chip:hover{color:var(--ink); border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
 .mapbox{margin:16px 0 0; overflow-x:auto; -webkit-overflow-scrolling:touch}
-svg.graph{display:block; width:100%; min-width:620px; height:auto}
+svg.graph{display:block; width:100%; min-width:560px; height:auto}
+.scrollhint{display:none; font-size:13.5px; color:var(--muted); margin:8px 0 0; font-family:Archivo}
+@media (max-width:640px){ .scrollhint{display:block} }
 .node{cursor:pointer}
 .node circle{fill:var(--nodefill); stroke:var(--line); stroke-width:1.5; transition:stroke .18s,fill .18s}
 .node text{font-family:Archivo; font-weight:600; font-size:13px; fill:var(--ink); pointer-events:none}
 .node.k-live circle{stroke:var(--ochre); stroke-width:2.5}
 .node.k-root circle{stroke:var(--dust); stroke-width:2; stroke-dasharray:4 3}
 .node.sel circle{fill:var(--ochre); stroke:var(--ochre)}
-.node.sel text{fill:#fff}
+.node.sel text{fill:#FFF7F2}
 .edge{fill:none; stroke:var(--muted); stroke-width:1.3; opacity:.42; transition:opacity .18s,stroke .18s}
 .edge.in{stroke:var(--sky); opacity:1; stroke-width:2.2}
 .edge.out{stroke:var(--ochre); opacity:1; stroke-width:2.2}
@@ -161,17 +179,46 @@ svg.graph{display:block; width:100%; min-width:620px; height:auto}
 .calc input[type=range]{width:100%; accent-color:var(--ochre)}
 .calcout{font-family:Archivo; font-weight:800; font-size:clamp(24px,4vw,34px); letter-spacing:-0.03em; margin:18px 0 6px; line-height:1.15}
 .calcout b{color:var(--ochre); font-variant-numeric:tabular-nums}
+.calcout #calc-meals{color:var(--sky)}
 .calcnote{font-size:14.5px; color:var(--muted); margin:0}
 
 /* photos */
-.shots{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:22px; margin-top:28px}
-.shot{margin:0}
-.shot img{
-  width:100%; height:auto; display:block; border-radius:3px;
-  border:1px solid var(--line); background:var(--panel);
+.show{margin-top:28px}
+.stage{
+  position:relative; background:var(--panel); border:1px solid var(--line);
+  border-radius:3px; min-height:240px; display:flex; align-items:center;
+  justify-content:center; overflow:hidden; touch-action:pan-y;
 }
-.shot figcaption{font-size:15px; color:var(--muted); margin-top:10px; line-height:1.45}
-.shot .when{font-family:Archivo; font-weight:600; font-size:12.5px; color:var(--ochre); display:block}
+.slide{margin:0; display:none}
+.slide.on{display:block}
+.slide img{display:block; max-width:100%; max-height:62vh; width:auto; height:auto}
+.navb{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:42px; height:42px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line); background:var(--bg); color:var(--ink);
+  font-family:Archivo; font-size:19px; line-height:1; display:flex;
+  align-items:center; justify-content:center; opacity:.9;
+}
+.navb:hover{opacity:1; border-color:var(--ochre); color:var(--ochre)}
+.navb.prev{left:12px}
+.navb.next{right:12px}
+.shownav{display:flex; align-items:center; gap:16px; margin-top:16px; flex-wrap:wrap}
+.count{font-family:Archivo; font-weight:600; font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.thumbs{
+  display:flex; gap:8px; flex:1; overflow-x:auto; padding:2px 0 4px;
+  scrollbar-width:thin; -webkit-overflow-scrolling:touch;
+}
+.thumb{
+  flex:0 0 auto; width:76px; height:56px; padding:0; cursor:pointer;
+  border:1px solid var(--line); border-radius:2px; overflow:hidden;
+  background:var(--panel); opacity:.62; transition:opacity .15s,border-color .15s;
+}
+.thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.thumb:hover{opacity:.9}
+.thumb.on{opacity:1; border-color:var(--ochre); border-width:2px}
+@media (max-width:620px){ .thumb{width:62px; height:46px} }
+.cap{font-size:16px; color:var(--muted); margin:14px 0 0; line-height:1.45; min-height:46px}
+.cap .when{font-family:Archivo; font-weight:600; font-size:12.5px; color:var(--sky); display:block}
 
 /* giving */
 .give .col{max-width:64ch}
@@ -193,11 +240,12 @@ footer p{margin:0 0 10px; max-width:62ch}
 <header class="top">
   <div class="wrap">
     <div class="mark">Project El <span>Roi</span></div>
+    <span class="tag">God sees, we act</span>
     <nav class="topnav">
       <a href="#record">The record</a>
       <a href="#map">How it connects</a>
       <a href="#work">The work</a>
-      <a href="#give">Give</a>
+      <a href="#give" class="keep">Give</a>
     </nav>
   </div>
 </header>
@@ -213,7 +261,8 @@ footer p{margin:0 0 10px; max-width:62ch}
   </div>
   <h1 class="lede">On the last recorded day, <em id="hero-total">228</em> people in Logoole ate.</h1>
   <p class="sub" id="hero-break"><span id="hero-children">194</span> children and <span id="hero-adults">34</span> adults, cooked in one homestead and served in one sitting. That is the whole of the response so far, and we would rather show it at that size than dress it up.</p>
-  <p class="meaning">El Roi is the name Hagar gave God in the desert: the God who sees me. Karamoja is a place the rest of the country forgets between droughts. The point of this project is to be a record that somebody is watching.</p>
+  <p class="meaning">El Roi is the name Hagar gave God in the desert: the God who sees me. Karamoja is a place the rest of the country forgets between droughts. The point of this project is to be a record that somebody is watching, and then does something about it.</p>
+  <p class="creed">God sees, <span>We act.</span></p>
   <div class="cta">
     <a class="btn" href="#give">How to give</a>
     <a class="btn ghost" href="#map">See how the problems feed each other</a>
@@ -230,9 +279,27 @@ footer p{margin:0 0 10px; max-width:62ch}
   <p class="fignote">These figures come from written feeding reports sent by the pastor who runs the kitchen, not from estimates. When a number here is small, it is because the work is young, not because the reporting is thin. Last updated <span id="f-updated">20 September 2026</span>.</p>
 </div>
 
+<section class="wrap" id="photos" hidden>
+  <p class="kicker info">From the ground</p>
+  <h2>Photographs sent back from the feedings.</h2>
+  <p class="col muted">The feedings behind the figures above, photographed on the days named. Nothing here is stock, staged or bought.</p>
+  <div class="show">
+    <div class="stage" id="stage" tabindex="0">
+      <div id="slides"></div>
+      <button class="navb prev" id="prev" aria-label="Previous photograph">&#8249;</button>
+      <button class="navb next" id="next" aria-label="Next photograph">&#8250;</button>
+    </div>
+    <p class="cap" id="cap" aria-live="polite"></p>
+    <div class="shownav">
+      <span class="count" id="count"></span>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </div>
+</section>
+
 <section class="wrap">
   <div class="col">
-    <p class="kicker">Why now</p>
+    <p class="kicker info">Why now</p>
     <h2>The dry season is arriving early and El Ni&ntilde;o is arriving behind it.</h2>
     <p>Karamoja, in Uganda's far northeast, is semi-arid and agro-pastoralist: families live off what they plant at the rains and what their herds survive. When the rains fail, both fail together. Hunger in the region has repeatedly peaked during drought, and an El Ni&ntilde;o cycle on top of a poor harvest compounds it &mdash; the World Food Programme has reported on this pattern in Karamoja directly.</p>
     <p>What that means in Logoole is narrower and more immediate: households run out of food before the next planting, eat their seed stock to survive, and then have nothing to sow when the rain does come. That is the loop this project is trying to interrupt.</p>
@@ -242,7 +309,7 @@ footer p{margin:0 0 10px; max-width:62ch}
 
 <section class="mapsec" id="map">
   <div class="wrap">
-    <p class="kicker">How it connects</p>
+    <p class="kicker info">How it connects</p>
     <h2>None of these is one problem.</h2>
     <p class="col muted">A child out of school in Logoole is usually not a school problem. Tap any circle to see what drives it and what it drives. Blue arrows point at it; orange arrows point away from it.</p>
 
@@ -262,6 +329,7 @@ footer p{margin:0 0 10px; max-width:62ch}
         <g id="nodes"></g>
       </svg>
     </div>
+    <p class="scrollhint">The diagram is wider than your screen. Drag it sideways to see all of it.</p>
     <p class="legend">A dashed circle is a condition nobody here can switch off. A solid orange circle is something Project El Roi is already doing something about.</p>
 
     <div class="detail" id="detail"></div>
@@ -284,13 +352,6 @@ footer p{margin:0 0 10px; max-width:62ch}
     <p class="calcout"><b id="calc-usd">$50</b> covers <b id="calc-meals">182</b> meals</p>
     <p class="calcnote" id="calc-note">About <span id="calc-days">1</span> day of feeding at the current scale. Based on posho at <span id="calc-posho">2,200</span> and beans at <span id="calc-beans">4,000</span> shillings a kilo, and an exchange rate of <span id="calc-rate">3,650</span> shillings to the dollar. Prices move; this page moves with them.</p>
   </div>
-</section>
-
-<section class="wrap" id="photos" hidden>
-  <p class="kicker">From the ground</p>
-  <h2>Photographs sent back from the feedings.</h2>
-  <p class="col muted">Taken in Logoole on the days named. Nothing here is stock, staged or bought.</p>
-  <div class="shots" id="shots"></div>
 </section>
 
 <section class="wrap give" id="give">
@@ -317,7 +378,7 @@ footer p{margin:0 0 10px; max-width:62ch}
 
 <footer>
   <div class="wrap">
-    <p><b>Project El Roi</b> &mdash; Logoole Village, Kotido Rural Parish, Kotido Municipality, Karamoja, Uganda.</p>
+    <p><b>Project El Roi</b> &mdash; God sees, we act. Logoole Village, Kotido Rural Parish, Kotido Municipality, Karamoja, Uganda.</p>
     <p>Ugandans doing for Ugandans. Figures on this page are drawn from dated feeding reports filed from the ground and are updated as new reports arrive.</p>
   </div>
 </footer>
@@ -593,18 +654,62 @@ function esc(s){
     .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+var shots=[], shotAt=0;
+
 function renderPhotos(){
-  var list=(DATA.photos||[]), sec=el("photos");
-  if(!list.length){ sec.hidden=true; el("shots").innerHTML=""; return; }
+  shots=(DATA.photos||[]);
+  var sec=el("photos");
+  if(!shots.length){ sec.hidden=true; el("slides").innerHTML=""; return; }
   sec.hidden=false;
-  el("shots").innerHTML=list.map(function(p){
-    var when=p.date ? '<span class="when">'+esc(prettyDate(p.date))+'</span>' : "";
-    var cap=p.caption ? esc(p.caption) : "";
-    var fig=(when||cap) ? '<figcaption>'+when+cap+'</figcaption>' : "";
-    return '<figure class="shot"><img loading="lazy" alt="'+esc(p.caption||"A feeding day in Logoole Village")+
-           '" src="'+p.src+'">'+fig+'</figure>';
+  el("slides").innerHTML=shots.map(function(p,i){
+    return '<figure class="slide'+(i===0?" on":"")+'">'+
+           '<img '+(i?'loading="lazy" ':'')+'alt="'+
+           esc(p.caption||"A feeding day in Logoole Village")+'" src="'+p.src+'"></figure>';
   }).join("");
+  el("thumbs").innerHTML=shots.map(function(p,i){
+    return '<button class="thumb'+(i===0?" on":"")+'" data-i="'+i+
+           '" aria-label="Photograph '+(i+1)+'"><img loading="lazy" alt="" src="'+p.src+'"></button>';
+  }).join("");
+  var many=shots.length>1;
+  el("prev").style.display=many?"flex":"none";
+  el("next").style.display=many?"flex":"none";
+  el("thumbs").style.display=many?"flex":"none";
+  showShot(0);
 }
+
+function showShot(i){
+  if(!shots.length) return;
+  shotAt=(i+shots.length)%shots.length;
+  var sl=el("slides").children, dt=el("thumbs").children, k;
+  for(k=0;k<sl.length;k++) sl[k].classList.toggle("on",k===shotAt);
+  for(k=0;k<dt.length;k++) dt[k].classList.toggle("on",k===shotAt);
+  if(dt[shotAt] && dt[shotAt].scrollIntoView)
+    dt[shotAt].scrollIntoView({block:"nearest",inline:"nearest"});
+  var p=shots[shotAt];
+  var when=p.date ? '<span class="when">'+esc(prettyDate(p.date))+'</span>' : "";
+  el("cap").innerHTML=when+(p.caption?esc(p.caption):"");
+  el("count").textContent=(shotAt+1)+" of "+shots.length;
+}
+
+el("prev").addEventListener("click",function(){ showShot(shotAt-1); });
+el("next").addEventListener("click",function(){ showShot(shotAt+1); });
+el("thumbs").addEventListener("click",function(e){
+  var b=e.target.closest(".thumb"); if(b) showShot(+b.getAttribute("data-i"));
+});
+el("stage").addEventListener("keydown",function(e){
+  if(e.key==="ArrowLeft"){ e.preventDefault(); showShot(shotAt-1); }
+  if(e.key==="ArrowRight"){ e.preventDefault(); showShot(shotAt+1); }
+});
+(function(){
+  var x0=null;
+  var st=el("stage");
+  st.addEventListener("touchstart",function(e){ x0=e.touches[0].clientX; },{passive:true});
+  st.addEventListener("touchend",function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>45) showShot(shotAt+(dx<0?1:-1));
+  },{passive:true});
+})();
 
 function calc(){
   var usd=n(el("amt").value), c=DATA.cost;
