@@ -357,6 +357,31 @@ footer p{margin:0 0 8px; max-width:52ch}
 footer strong{font-family:var(--serif); font-size:20px; letter-spacing:.06em; color:#fff}
 footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; color:#fff}
 
+/* our work: filmstrip of photographs.
+   Photos keep their own shape (most are tall phone shots), so the strip is a
+   fixed height and scrolls sideways instead of cropping every photo to one box. */
+.wstrip{position:relative; background:var(--forest); color:var(--on-forest); padding-block:30px 26px}
+.wstrip .eyebrow{margin:0 0 16px}
+.wtrack{
+  --gut:max(clamp(18px,4vw,28px),calc((100% - 1240px)/2 + clamp(18px,4vw,28px)));
+  display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none;
+  padding-inline:var(--gut); scroll-padding-inline:var(--gut); -webkit-overflow-scrolling:touch;
+}
+.wtrack::-webkit-scrollbar{display:none}
+.wslide{flex:0 0 auto; scroll-snap-align:start; margin:0; display:flex; flex-direction:column}
+.wslide img{display:block; height:min(440px,62vh); width:auto; border-radius:8px; background:#0C261A}
+.wslide figcaption{width:0; min-width:100%; margin-top:10px; font-size:14px; line-height:1.4; color:#DCE5DD}
+.wnav{
+  position:absolute; z-index:5; top:calc(30px + 28px + min(440px,62vh)/2); transform:translateY(-50%);
+  width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.35);
+  background:rgba(12,38,26,.78); color:#fff; font-size:26px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.wnav:hover:not(:disabled){background:var(--cta); border-color:var(--cta)}
+.wnav:disabled{opacity:0; pointer-events:none}
+.wnav.prev{left:14px} .wnav.next{right:14px}
+@media (max-width:820px){ .wslide img{height:min(340px,56vh)} .wnav{top:calc(30px + 28px + min(340px,56vh)/2); width:40px; height:40px} }
+
 @media (prefers-reduced-motion:reduce){ *{transition:none !important; animation:none !important} }
 </style>
 </head>
@@ -552,6 +577,13 @@ footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; col
 
 <div id="view-work" hidden>
 
+<section class="wstrip" id="work-photos" aria-label="Photographs from the work" hidden>
+  <div class="wrap"><p class="eyebrow">From the work</p></div>
+  <div class="wtrack" id="wtrack" tabindex="0" role="region" aria-label="Photographs, scroll sideways"></div>
+  <button class="wnav prev" id="wprev" type="button" aria-label="Previous photographs" disabled>&#8249;</button>
+  <button class="wnav next" id="wnext" type="button" aria-label="Next photographs">&#8250;</button>
+</section>
+
 <section class="wrap" id="work">
   <p class="kicker">The work</p>
   <h2>Two things running, seven things named and not yet started.</h2>
@@ -641,7 +673,7 @@ footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; col
   </form>
 </dialog>
 
-<script type="application/json" id="elroi-data">{"org":{"contactEmail":"","contactPhone":"","contactWhatsapp":"","contactNote":""},"feeding":{"date":"2026-09-16","children":194,"adults":34,"village":"Logoole","parish":"Kotido Rural Parish","municipality":"Kotido Municipality"},"cost":{"perMealUgx":1000,"dailyUgx":160000,"poshoUgx":2200,"beansUgx":4000,"usdRate":3650},"cumulative":{"meals":228,"reports":1},"photos":[],"updated":"2026-09-20"}</script>
+<script type="application/json" id="elroi-data">{"org":{"contactEmail":"","contactPhone":"","contactWhatsapp":"","contactNote":""},"feeding":{"date":"2026-09-16","children":194,"adults":34,"village":"Logoole","parish":"Kotido Rural Parish","municipality":"Kotido Municipality"},"cost":{"perMealUgx":1000,"dailyUgx":160000,"poshoUgx":2200,"beansUgx":4000,"usdRate":3650},"cumulative":{"meals":228,"reports":1},"photos":[],"workPhotos":[],"updated":"2026-09-20"}</script>
 <script>
 (function(){
 "use strict";
@@ -904,6 +936,7 @@ function render(){
   else { em.textContent="Contact details are being added here."; }
   ph.textContent = org.contactWhatsapp || org.contactPhone || "Contact details are being added here.";
   renderPhotos();
+  renderWorkPhotos();
   calc();
 }
 
@@ -1048,6 +1081,42 @@ fetch("data.json", {cache:"no-store"})
     }
   })
   .catch(function(){ /* keep the baked-in figures */ });
+
+/* ---------- our work: filmstrip ---------- */
+/* Photos come from "workPhotos" in data.json ({src, caption, alt, date optional}).
+   The caption is what people read; "alt" is the plain description for screen readers. */
+function renderWorkPhotos(){
+  var list=DATA.workPhotos||[], sec=el("work-photos"), track=el("wtrack");
+  if(!list.length){ sec.hidden=true; track.innerHTML=""; return; }
+  sec.hidden=false;
+  track.innerHTML=list.map(function(p,i){
+    var cap=[p.date?prettyDate(p.date):"", p.caption||""].filter(Boolean).join(". ");
+    return '<figure class="wslide"><img src="'+esc(p.src)+'" alt="'+esc(p.alt||p.caption||"A photograph of the work")+'" decoding="async">'+
+           (cap?'<figcaption>'+esc(cap)+'</figcaption>':'')+'</figure>';
+  }).join("");
+  Array.prototype.forEach.call(track.querySelectorAll("img"),function(im){ im.addEventListener("load",wUpdate); });
+  var many=list.length>1;
+  el("wprev").style.display=many?"":"none"; el("wnext").style.display=many?"":"none";
+  wUpdate();
+}
+function wUpdate(){
+  var t=el("wtrack");
+  el("wprev").disabled = t.scrollLeft<=2;
+  el("wnext").disabled = t.scrollLeft+t.clientWidth>=t.scrollWidth-2;
+}
+function wStep(dir){
+  var t=el("wtrack");
+  t.scrollBy({left:dir*Math.max(220,t.clientWidth*0.85), behavior:RM?"auto":"smooth"});
+}
+el("wprev").addEventListener("click",function(){ wStep(-1); });
+el("wnext").addEventListener("click",function(){ wStep(1); });
+el("wtrack").addEventListener("scroll",wUpdate,{passive:true});
+el("wtrack").addEventListener("keydown",function(e){
+  if(e.key==="ArrowLeft"){ e.preventDefault(); wStep(-1); }
+  if(e.key==="ArrowRight"){ e.preventDefault(); wStep(1); }
+});
+window.addEventListener("resize",wUpdate);
+window.addEventListener("load",wUpdate);
 
 /* ---------- header menu (small screens) ---------- */
 var topEl=el("top"), menuBtn=el("menu-btn");
