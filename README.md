@@ -63,6 +63,13 @@ second place to edit — always edit `data.json`.
       }
     ]
 
+The Our Work page has its own filmstrip at the top, fed by a second list,
+`workPhotos`, with the same shape (`src`, `caption`, and an optional `date`),
+plus an `alt` that describes what is literally in the photo, for screen readers.
+The caption can be thoughtful and general; the alt should stay plain.
+Photos there keep their own proportions and scroll sideways; it stays hidden
+while the list is empty.
+
 The carousel under the hero stays hidden while that list is empty, and
 appears as soon as it has something in it. Photos rotate in the order listed.
 The first one dated the same as the latest feeding ("feeding" > "date") also

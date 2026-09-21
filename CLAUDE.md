@@ -45,7 +45,9 @@ are sentence case. The slogan is written "God sees. We act." everywhere.
 
 The homepage is one file with two views, switched by the URL hash: the main
 page, and "Our Work" (`#work`, with `#map` inside it), which holds the work
-list and the interconnection map. Every header link is an anchor on the main
+list and the interconnection map, under a filmstrip of photographs from the
+`workPhotos` list in `data.json` (fixed height, each photo keeps its own shape,
+scrolls sideways). Every header link is an anchor on the main
 page except Our Work. The carousel below the hero is built from the `photos`
 list in `data.json`; the first photo dated the same as `feeding.date` gets the
 latest-feeding-report panel, the rest show their own date and caption only.

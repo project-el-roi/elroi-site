@@ -41,5 +41,47 @@
       "date": "2026-09-14"
     }
   ],
+  "workPhotos": [
+    {
+      "src": "photos/work-01.jpg",
+      "caption": "Clothing shared with the community",
+      "alt": "Clothes being handed out beside a truck"
+    },
+    {
+      "src": "photos/work-02.jpg",
+      "caption": "Received with a smile",
+      "alt": "Woman holding up a dark garment"
+    },
+    {
+      "src": "photos/work-03.jpg",
+      "caption": "Clothing, shared in the open air",
+      "alt": "Men holding up clothes beside a truck"
+    },
+    {
+      "src": "photos/work-04.jpg",
+      "caption": "Hands passing clothing along",
+      "alt": "Clothes being handed to people in a crowd"
+    },
+    {
+      "src": "photos/work-05.jpg",
+      "caption": "Clothing for families, shared together",
+      "alt": "Women holding clothes beside a brick building"
+    },
+    {
+      "src": "photos/work-06.jpg",
+      "caption": "A meal, received with care",
+      "alt": "Person holding a plate of food outdoors"
+    },
+    {
+      "src": "photos/work-07.jpg",
+      "caption": "Food cooked for many",
+      "alt": "Two large pots of food, people serving"
+    },
+    {
+      "src": "photos/work-08.jpg",
+      "caption": "Meals served, one bowl at a time",
+      "alt": "Serving food from large pots into bowls"
+    }
+  ],
   "updated": "2026-09-20"
 }
