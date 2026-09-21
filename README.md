@@ -32,8 +32,13 @@ commit. The site redeploys within a minute.
     "cumulative"  running totals across every report: meals, reports
     "cost"        perMealUgx, dailyUgx, poshoUgx, beansUgx, usdRate.
                   These drive the slider, so keep usdRate roughly current.
-    "org"         contactEmail and contactPhone. Leave either blank and the
-                  page shows a placeholder line instead.
+    "org"         contactEmail, contactWhatsapp (or contactPhone) and
+                  contactNote. The Donate form sends to these: email opens
+                  the visitor's mail app, WhatsApp opens wa.me/<number>. Give
+                  the WhatsApp number with its country code, for example
+                  +256 700 123 456; spaces and the plus sign are ignored.
+                  Leave either blank and that send button is switched off,
+                  and the page shows a placeholder line instead.
     "updated"     the date shown under the figures. Change it when you
                   change anything else.
 
@@ -58,9 +63,12 @@ second place to edit — always edit `data.json`.
       }
     ]
 
-The gallery section stays hidden while that list is empty, and appears as
-soon as it has something in it. Keep captions to a place and a date; that is
-what makes them credible.
+The carousel under the hero stays hidden while that list is empty, and
+appears as soon as it has something in it. Photos rotate in the order listed.
+The first one dated the same as the latest feeding ("feeding" > "date") also
+shows the feeding report panel; the others show their own date and caption.
+Keep captions to what is visible, plus a date; that is what makes them
+credible.
 
 ## A note on the photographs
 
@@ -70,11 +78,11 @@ and prefer wide shots of the serving line to close portraits of individual
 faces. Funders will ask about this eventually, and it is easier to have done
 it from the start than to go back.
 
-## Adding a donate button later
+## The Donate button, and taking payments later
 
-The giving section of `index.html` currently explains, deliberately, that
-there is no donate button yet and what has to exist first: an account the
-project holds rather than a person, a second signature on withdrawals, and a
-published monthly statement set against the feeding reports. When those
-exist, replace that section — search `id="give"` in `index.html` — and say
-the date it changed.
+The Donate button opens a message form, not a payment page. The giving
+section of `index.html` explains, deliberately, that there is no payment
+button yet and what has to exist first: an account the project holds rather
+than a person, a second signature on withdrawals, and a published monthly
+statement set against the feeding reports. When those exist, change that
+section (search `id="give"` in `index.html`) and say the date it changed.
