@@ -2,6 +2,7 @@
   "org": {
     "contactEmail": "",
     "contactPhone": "",
+    "contactWhatsapp": "",
     "contactNote": ""
   },
   "feeding": {
@@ -27,21 +28,6 @@
     {
       "src": "photos/feeding-2026-09-16-b.jpg",
       "caption": "Long line of children holding bowls",
-      "date": "2026-09-16"
-    },
-    {
-      "src": "photos/feeding-2026-09-16-a.jpg",
-      "caption": "Large pot of food, children gathered around",
-      "date": "2026-09-16"
-    },
-    {
-      "src": "photos/feeding-2026-09-16-t.jpg",
-      "caption": "Child carrying a plate of beans; others waiting",
-      "date": "2026-09-16"
-    },
-    {
-      "src": "photos/feeding-2026-09-16-j.jpg",
-      "caption": "Man crouching to eat from a bowl",
       "date": "2026-09-16"
     },
     {

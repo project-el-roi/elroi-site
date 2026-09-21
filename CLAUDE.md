@@ -2,7 +2,7 @@
 
 A single static page for a Ugandan-led hunger response in Logoole Village,
 Kotido Rural Parish, Kotido Municipality, Karamoja. Hosted on Vercel from
-this repo. Slogan: "God sees, We act."
+this repo. Slogan: "God sees. We act."
 
 ## Structure
 
@@ -24,19 +24,31 @@ the fetch fails. Never introduce a second source of truth.
 ## Design decisions to preserve
 
 Palette, as CSS custom properties on `:root` with a dark-mode counterpart:
-sand background `#F7F2E9`, clay `#C2410C` (`--ochre`), water teal `#0E6A7D`
-(`--sky`), ink `#1A1F22`. Dark mode is a warm brown-black, not a cold one.
+cream background `#F8F5ED`, paper `#FFFDF8`, ink `#18251D`, forest green
+`#123B29` (`--forest`, the impact card and footer), leaf green `#1F6B47`
+(`--green`, text accents and links), rust `#B9431F` (`--rust`, and `--cta`
+for the Donate button), muted gold `#D49A2D` (`--gold`, icon tints only).
+Dark mode is a deep green-black. The design brief is `design.md` (kept out of
+the repo); the visual reference is the mockup it names.
 
-The two accents carry a rule: **clay is action, teal is information and
-outcome.** Clay marks what the project or a donor does — the "The work",
-"What a gift buys" and "Giving" section headers, the dollar amount in the
-slider, "God sees". Teal marks explanation and result — the "Why now",
-"How it connects" and "From the ground" headers, body links, the meal count
-in the slider, "We act". Keep new elements consistent with that split
-rather than adding a third accent.
+The accents carry a rule: **rust is action, green is information and
+outcome.** Rust marks what the project or a donor does: the Donate button,
+the "The work", "What a gift buys" and "Get involved" labels, running items
+on the map. Green marks explanation and result: the "Why now", "How it
+connects", "About" and "Reports" labels, body links, the meal count in the
+slider. Gold is decoration only, never text. Keep new elements consistent
+with that split rather than adding another accent.
 
-Type is Archivo for display and UI, Source Serif 4 for body. Sentence case
-throughout, except the slogan's "We act."
+Type is Source Serif 4 for headlines and figures, Archivo for body and UI.
+Small uppercase labels (eyebrows, kickers) are part of the design; headlines
+are sentence case. The slogan is written "God sees. We act." everywhere.
+
+The homepage is one file with two views, switched by the URL hash: the main
+page, and "Our Work" (`#work`, with `#map` inside it), which holds the work
+list and the interconnection map. Every header link is an anchor on the main
+page except Our Work. The carousel below the hero is built from the `photos`
+list in `data.json`; the first photo dated the same as `feeding.date` gets the
+latest-feeding-report panel, the rest show their own date and caption only.
 
 The page is written as a dated ledger, not a brochure. Figures are tied to
 specific feeding reports and dates. The tone is deliberately sober and
@@ -52,16 +64,21 @@ bow around nodes they would otherwise cross. If you move a node, re-check
 the edges near it for overlap.
 
 `kind` is `root` (dashed — a condition nobody can change), `live` (solid
-clay — something the project is already doing) or `planned`.
+rust — something the project is already doing) or `planned`.
 
 ## Things that are deliberately absent
 
-There is **no donate button.** The giving section explains that money
-currently moves as mobile money to the pastor, that there is no registered
-account, independent bookkeeping or audited trail, and that a button before
-those exist would be asking for unearned trust. It then names the three
-things being built first. Do not add a payment widget until the user says
-those exist, and when the section changes, say the date it changed.
+There is **no payment button.** The Donate button in the header (and in the
+Get involved section) opens a form that builds a message and hands it to the
+visitor's own email or WhatsApp app, addressed to the details in `data.json`;
+nothing is sent from the page and no payment is taken. The Get involved
+section explains that money currently moves as mobile money to the pastor,
+that there is no registered account, independent bookkeeping or audited
+trail, and that a payment button before those exist would be asking for
+unearned trust. It then names the three things being built first. Do not add
+a payment widget until the user says those exist, and when the section
+changes, say the date it changed (last changed 20 September 2026, when the
+Donate button was added).
 
 Seven of the nine initiatives are listed as "Not started" and most say "Not
 yet costed". That honesty is the point, not an omission to fill in.
