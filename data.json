@@ -5,24 +5,143 @@
     "contactWhatsapp": "",
     "contactNote": ""
   },
-  "feeding": {
-    "date": "2026-09-16",
-    "children": 194,
-    "adults": 34,
+  "site": {
     "village": "Logoole",
     "parish": "Kotido Rural Parish",
     "municipality": "Kotido Municipality"
   },
+  "programmeStarted": "2026-07-17",
+  "reports": [
+    {
+      "date": "2026-08-31",
+      "status": "reported",
+      "children": 158,
+      "adults": 58,
+      "challenges": ""
+    },
+    {
+      "date": "2026-09-01",
+      "status": "reported",
+      "children": 220,
+      "adults": 60,
+      "challenges": "Numbers increasing day by day. Food ration not enough."
+    },
+    {
+      "date": "2026-09-02",
+      "status": "reported",
+      "children": 182,
+      "adults": 42,
+      "reportedTotal": 224,
+      "challenges": "Numbers overwhelming at the centre."
+    },
+    {
+      "date": "2026-09-03",
+      "status": "reported",
+      "children": 189,
+      "adults": 66,
+      "reportedTotal": 255,
+      "challenges": "Numbers overwhelming. Food ration not enough for everyone present."
+    },
+    {
+      "date": "2026-09-04",
+      "status": "reported",
+      "children": 164,
+      "adults": 34,
+      "reportedTotal": 198,
+      "challenges": "None. No child missed food."
+    },
+    {
+      "date": "2026-09-05",
+      "status": "reported",
+      "children": 170,
+      "adults": 70,
+      "challenges": "Numbers overwhelming. Food ration not enough."
+    },
+    {
+      "date": "2026-09-07",
+      "status": "reported",
+      "children": 188,
+      "adults": 56,
+      "reportedTotal": 244,
+      "challenges": "Hunger situation worsening. Numbers overwhelming."
+    },
+    {
+      "date": "2026-09-08",
+      "status": "reported",
+      "children": 192,
+      "adults": 55,
+      "reportedTotal": 247,
+      "challenges": "Food ration not enough. Numbers overwhelming."
+    },
+    {
+      "date": "2026-09-09",
+      "status": "reported",
+      "children": 196,
+      "adults": 36,
+      "reportedTotal": 232,
+      "challenges": "None. Nobody, young or old, missed food."
+    },
+    {
+      "date": "2026-09-10",
+      "status": "reported",
+      "children": 199,
+      "adults": 53,
+      "reportedTotal": 252,
+      "challenges": "Food still not enough. Numbers overwhelming. Some people missed food."
+    },
+    {
+      "date": "2026-09-12",
+      "status": "reported",
+      "children": 197,
+      "adults": 45,
+      "reportedTotal": 242,
+      "challenges": "None. Nobody missed food."
+    },
+    {
+      "date": "2026-09-14",
+      "status": "reported",
+      "children": 193,
+      "adults": 56,
+      "reportedTotal": 249,
+      "challenges": ""
+    },
+    {
+      "date": "2026-09-15",
+      "status": "reported",
+      "children": 169,
+      "adults": 45,
+      "reportedTotal": 204,
+      "challenges": "None. Nobody missed food."
+    },
+    {
+      "date": "2026-09-16",
+      "status": "reported",
+      "children": 194,
+      "adults": 34,
+      "reportedTotal": 228,
+      "challenges": "None."
+    },
+    {
+      "date": "2026-09-17",
+      "status": "reported",
+      "children": 199,
+      "adults": 56,
+      "reportedTotal": 255,
+      "challenges": "Some elderly women missed their ration."
+    },
+    {
+      "date": "2026-09-18",
+      "status": "estimated",
+      "estimatedTotal": 300,
+      "notes": "No written report; recalled as about 300."
+    }
+  ],
   "cost": {
     "perMealUgx": 1000,
     "dailyUgx": 160000,
     "poshoUgx": 2200,
     "beansUgx": 4000,
     "usdRate": 3650
-  },
-  "cumulative": {
-    "meals": 228,
-    "reports": 1
   },
   "photos": [
     {
@@ -83,5 +202,5 @@
       "alt": "Serving food from large pots into bowls"
     }
   ],
-  "updated": "2026-09-20"
+  "updated": "2026-09-21"
 }

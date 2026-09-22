@@ -27,9 +27,18 @@ Vercel.
 Open `data.json` on GitHub, press the pencil icon, change the numbers, and
 commit. The site redeploys within a minute.
 
-    "feeding"     the most recent feeding report: date (YYYY-MM-DD),
-                  children fed, adults fed. The headline adds these two.
-    "cumulative"  running totals across every report: meals, reports
+    "reports"     one entry per day. Written report: date (YYYY-MM-DD),
+                  "status":"reported", children, adults, challenges (what
+                  the kitchen reported; write "None" if none), and
+                  optionally reportedTotal (the total the report itself
+                  states, used only to flag a mismatch). A day with no
+                  written report but a recalled figure: "status":"estimated"
+                  and estimatedTotal. One entry per date.
+                  Nothing else is typed: meals served, the daily averages,
+                  the date range and the report log are all worked out from
+                  this list. Adding a day is one new entry.
+    "programmeStarted"  the date feeding began (YYYY-MM-DD).
+    "site"        village, parish, municipality.
     "cost"        perMealUgx, dailyUgx, poshoUgx, beansUgx, usdRate.
                   These drive the slider, so keep usdRate roughly current.
     "org"         contactEmail, contactWhatsapp (or contactPhone) and
@@ -40,11 +49,19 @@ commit. The site redeploys within a minute.
                   Leave either blank and that send button is switched off,
                   and the page shows a placeholder line instead.
     "updated"     the date shown under the figures. Change it when you
-                  change anything else.
+                  change anything else. The report log lists every day up to
+                  the day before this date.
 
 If `data.json` is ever malformed, the page quietly falls back to the figures
 baked into `index.html` rather than breaking. That is a safety net, not a
 second place to edit — always edit `data.json`.
+
+### Meals, not people
+
+The same community is fed every day, so daily counts must never be added up
+and shown as people. The headline is **meals served**: the sum of children and
+adults over the written reports only. "People fed" is only ever one day, or a
+daily average. Estimates are never in the total; they are shown separately.
 
 ## Adding photographs
 
@@ -72,8 +89,9 @@ while the list is empty.
 
 The carousel under the hero stays hidden while that list is empty, and
 appears as soon as it has something in it. Photos rotate in the order listed.
-The first one dated the same as the latest feeding ("feeding" > "date") also
-shows the feeding report panel; the others show their own date and caption.
+The first one dated the same as the most recent written report also shows
+the feeding report panel (if none matches, the first photo shows it with a note
+of the photo's own date); the others show their own date and caption.
 Keep captions to what is visible, plus a date; that is what makes them
 credible.
 

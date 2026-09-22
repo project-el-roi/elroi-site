@@ -49,8 +49,14 @@ list and the interconnection map, under a filmstrip of photographs from the
 `workPhotos` list in `data.json` (fixed height, each photo keeps its own shape,
 scrolls sideways). Every header link is an anchor on the main
 page except Our Work. The carousel below the hero is built from the `photos`
-list in `data.json`; the first photo dated the same as `feeding.date` gets the
-latest-feeding-report panel, the rest show their own date and caption only.
+list in `data.json`; the latest-feeding-report panel (the most recent written report) is on the first
+photo dated that day, or on the first photo with a note of the photo's own date
+if none matches; the rest show their own date and caption only.
+
+Figures are never stored. Meals served, the daily averages, the date range and
+the report log are all worked out from the `reports` list in `data.json`. Daily
+counts are people fed that day and are never summed as people; the headline
+is MEALS served, from written reports only, and estimates stay out of it.
 
 The page is written as a dated ledger, not a brochure. Figures are tied to
 specific feeding reports and dates. The tone is deliberately sober and
