@@ -6,6 +6,7 @@ live here:
     index.html    the whole site
     data.json     every figure the page displays
     photos/       photographs from the feedings
+    vercel.json   security headers Vercel sends with every response
 
 ## Putting it online
 
@@ -21,6 +22,11 @@ live here:
 To use your own domain, open the project in Vercel, go to Settings then
 Domains, and follow the instructions there for pointing the domain's DNS at
 Vercel.
+
+`vercel.json` tells Vercel to send a Content Security Policy and a few other
+security headers with every page. It only allows the fonts, styles and
+scripts the site already uses, so nothing needs to change there when you
+edit `data.json` or the photos.
 
 ## Updating the figures
 

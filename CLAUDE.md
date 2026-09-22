@@ -100,4 +100,8 @@ GPS coordinates, and this repo is public and permanent:
 
 Captions carry place and date only. No beneficiary names, no children's
 names, no phone numbers. The same applies to commit messages and to
-`data.json`.
+`data.json` — with one exception: the project's own published contact
+details, kept in `data.json`'s `org` object (`contactEmail`,
+`contactPhone`, `contactWhatsapp`), are meant to be shown on the page.
+Beneficiary and personal details stay banned everywhere, including in `org`
+itself — no individual's name goes in `contactNote` or anywhere else.
