@@ -72,8 +72,7 @@ bow around nodes they would otherwise cross. If you move a node, re-check
 the edges near it for overlap.
 
 `kind` is `root` (dashed — a condition nobody can change), `live` (solid
-rust — something the project is already doing), `done` (solid green —
-something it has finished) or `planned`.
+rust — something the project is already doing) or `planned`.
 
 ## Things that are deliberately absent
 
