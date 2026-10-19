@@ -39,7 +39,9 @@ commit. The site redeploys within a minute.
                   optionally reportedTotal (the total the report itself
                   states, used only to flag a mismatch). A day with no
                   written report but a recalled figure: "status":"estimated"
-                  and estimatedTotal. One entry per date.
+                  and estimatedTotal. A written report that gives no
+                  headcount: "status":"uncounted" and notes. One entry
+                  per date.
                   Nothing else is typed: meals served, the daily averages,
                   the date range and the report log are all worked out from
                   this list. Adding a day is one new entry.

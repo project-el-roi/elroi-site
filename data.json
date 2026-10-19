@@ -134,6 +134,42 @@
       "status": "estimated",
       "estimatedTotal": 300,
       "notes": "No written report; recalled as about 300."
+    },
+    {
+      "date": "2026-09-24",
+      "status": "reported",
+      "children": 198,
+      "adults": 71,
+      "reportedTotal": 269,
+      "challenges": "Adult women fighting for food."
+    },
+    {
+      "date": "2026-09-26",
+      "status": "uncounted",
+      "notes": "The report says everyone, young and adult, got food."
+    },
+    {
+      "date": "2026-10-08",
+      "status": "reported",
+      "children": 178,
+      "adults": 48,
+      "reportedTotal": 226,
+      "challenges": ""
+    },
+    {
+      "date": "2026-10-09",
+      "status": "reported",
+      "children": 209,
+      "adults": 45,
+      "reportedTotal": 254,
+      "challenges": ""
+    },
+    {
+      "date": "2026-10-13",
+      "status": "reported",
+      "children": 199,
+      "adults": 60,
+      "challenges": ""
     }
   ],
   "cost": {
@@ -202,5 +238,5 @@
       "alt": "Serving food from large pots into bowls"
     }
   ],
-  "updated": "2026-09-21"
+  "updated": "2026-10-19"
 }

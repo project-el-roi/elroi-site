@@ -1151,6 +1151,7 @@ function renderLog(){
     var day=esc(prettyDate(r.date));
     if(r.status==="none") return '<li class="gap"><span class="d">'+day+'</span><span class="c">No report</span></li>';
     if(r.status==="estimated") return '<li class="est"><span class="d">'+day+'</span><span class="c">About '+fmt(r.estimatedTotal)+' people, estimate with no written report. Not counted.</span></li>';
+    if(r.status==="uncounted") return '<li class="est"><span class="d">'+day+'</span><span class="c">Written report with no headcount. Not counted.</span>'+(r.notes ? '<span class="ch">'+esc(r.notes)+'</span>' : '')+'</li>';
     var sum=n(r.children)+n(r.adults);
     var ch=String(r.challenges||"").trim(), cls=/^none/i.test(ch) ? "ch" : "ch warn";
     var chHtml = ch ? '<span class="'+cls+'">'+esc(ch)+'</span>' : '<span class="ch">No challenges recorded.</span>';
