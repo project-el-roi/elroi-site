@@ -72,7 +72,8 @@ bow around nodes they would otherwise cross. If you move a node, re-check
 the edges near it for overlap.
 
 `kind` is `root` (dashed — a condition nobody can change), `live` (solid
-rust — something the project is already doing) or `planned`.
+rust — something the project is already doing), `done` (solid green —
+something it has finished) or `planned`.
 
 ## Things that are deliberately absent
 
@@ -88,7 +89,7 @@ a payment widget until the user says those exist, and when the section
 changes, say the date it changed (last changed 20 September 2026, when the
 Donate button was added).
 
-Seven of the nine initiatives are listed as "Not started" and most say "Not
+Six of the initiatives are listed as "Not started" and most say "Not
 yet costed". That honesty is the point, not an omission to fill in.
 
 ## Photographs

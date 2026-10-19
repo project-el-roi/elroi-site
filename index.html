@@ -257,6 +257,7 @@ svg.graph{display:block; width:100%; min-width:560px; height:auto}
 .node circle{fill:var(--nodefill); stroke:var(--line); stroke-width:1.5; transition:stroke .18s,fill .18s}
 .node text{font-family:Archivo; font-weight:600; font-size:13px; fill:var(--ink); pointer-events:none}
 .node.k-live circle{stroke:var(--rust); stroke-width:2.5}
+.node.k-done circle{stroke:var(--green); stroke-width:2.5}
 .node.k-root circle{stroke:var(--dust); stroke-width:2; stroke-dasharray:4 3}
 .node.sel circle{fill:var(--rust); stroke:var(--rust)}
 .node.sel text{fill:#FFF7F2}
@@ -291,6 +292,7 @@ svg.graph{display:block; width:100%; min-width:560px; height:auto}
 .pill.running{color:var(--rust)}
 .pill.starting{color:var(--green)}
 .pill.planned{color:var(--muted)}
+.pill.done{color:var(--green)}
 .need{font-family:Archivo; font-size:14px; color:var(--ink); font-weight:500; line-height:1.45}
 .need b{font-weight:600; font-variant-numeric:tabular-nums}
 
@@ -479,14 +481,14 @@ footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; col
 <section class="wrap" id="initiatives">
   <p class="kicker info">Our seven initiatives</p>
   <h2>Seven connected initiatives.</h2>
-  <p class="lead">Two are under way. The other five are named and not yet started. We list them all because a plan that only shows its successes is not a plan.</p>
+  <p class="lead">Two are under way and one is done. The other four are named and not yet started. We list them all because a plan that only shows its successes is not a plan.</p>
   <div class="inits7">
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bowl"/></svg></span><h3>Food</h3><p>One cooked meal a day, with a written report after each feeding.</p><span class="pill running">Running</span></a>
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg></span><h3>Clean water</h3><p>Safe drinking water, and less of the day spent fetching it.</p><span class="pill planned">Not started</span></a>
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Education</h3><p>Uniform, shoes and school materials, so a child can take up a free school place.</p><span class="pill starting">Starting</span></a>
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-cross"/></svg></span><h3>Health</h3><p>Immunisation, hygiene and basic treatment.</p><span class="pill planned">Not started</span></a>
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Young mothers</h3><p>Infant supplies and practical support.</p><span class="pill planned">Not started</span></a>
-    <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-shirt"/></svg></span><h3>Clothing</h3><p>Everyday clothing, and the uniform that decides school entry.</p><span class="pill planned">Not started</span></a>
+    <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-shirt"/></svg></span><h3>Clothing</h3><p>Clothes and shoes distributed in Logoole and nearby villages.</p><span class="pill done">Done</span></a>
     <a class="i7" href="#work"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-sprout"/></svg></span><h3>Seeds</h3><p>Seed delivered before the rains, so it is not eaten first.</p><span class="pill planned">Not started</span></a>
   </div>
   <a class="more" href="#work">See the full list and costs <span aria-hidden="true">&rarr;</span></a>
@@ -607,7 +609,7 @@ footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; col
 
 <section class="wrap" id="work">
   <p class="kicker">The work</p>
-  <h2>Two things running, seven things named and not yet started.</h2>
+  <h2>Two things running, one done, six named and not yet started.</h2>
   <p class="col muted">Listing the unstarted ones is deliberate. A plan that only shows its successes is not a plan, and the gaps are where the money would actually go next.</p>
   <div class="inits" id="inits"></div>
 </section>
@@ -635,7 +637,7 @@ footer .fslogan{font-family:var(--serif); font-style:italic; font-size:18px; col
       </svg>
     </div>
     <p class="scrollhint">The diagram is wider than your screen. Drag it sideways to see all of it.</p>
-    <p class="legend">A dashed circle is a condition nobody here can switch off. A solid rust circle is something Project El Roi is already doing something about.</p>
+    <p class="legend">A dashed circle is a condition nobody here can switch off. A solid rust circle is something Project El Roi is already doing something about. A solid green circle is something it has done.</p>
 
     <div class="detail" id="detail"></div>
   </div>
@@ -739,10 +741,10 @@ var NODES=[
   title:"Immunisation, hygiene and basic care",
   body:"Malnourished children catch what is going around and keep it longer. Routine illness becomes dangerous, and weeks of school disappear into it.",
   doing:"Named, not started."},
- {id:"clothes",  x:636,y:470, r:36, kind:"planned", label:["Clothes"],
+ {id:"clothes",  x:636,y:470, r:36, kind:"done",    label:["Clothes"],
   title:"Clothing and school uniform",
   body:"Clothing reads as the softest item on this list until you notice it is a hard gate on school attendance.",
-  doing:"Named, not started."},
+  doing:"Done. A distribution of clothes and shoes in Logoole and nearby villages, finished on 24 September 2026. Learners at one primary school also received shoes."},
  {id:"maternal", x:448,y:588, r:40, kind:"planned", label:["Young","mothers"],
   title:"Support for young mothers and infants",
   body:"Girls who leave school early tend to marry and give birth early. A young mother with no income has an infant to feed and nothing to feed it with.",
@@ -925,11 +927,11 @@ var INITS=[
  {t:"Skills training for young mothers",s:"planned",
   d:"A trade, so a household earns rather than waits.",
   need:"Not yet costed."},
- {t:"Clothing",s:"planned",
-  d:"Everyday clothing, and the uniform that decides whether a child is let into class.",
-  need:"Not yet costed."}
+ {t:"Clothing",s:"done",
+  d:"Clothes and shoes distributed in Logoole and nearby villages, and shoes for the learners at one primary school.",
+  need:"Finished on 24 September 2026."}
 ];
-var LABEL={running:"Running",starting:"Starting",planned:"Not started"};
+var LABEL={running:"Running",starting:"Starting",planned:"Not started",done:"Done"};
 el("inits").innerHTML = INITS.map(function(i){
   return '<div class="init"><div><h3>'+i.t+' <span class="pill '+i.s+'">'+LABEL[i.s]+'</span></h3>'+
          '<p>'+i.d+'</p></div><div class="need">'+i.need+'</div></div>';
