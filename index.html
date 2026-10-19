@@ -1039,7 +1039,8 @@ function slideHtml(p,i,f,reportAt){
       '<p class="fed-nums">Children <b>'+fmt(kids)+'</b><i>|</i>Adults <b>'+fmt(ad)+'</b></p>'+
       '<p class="fed-total">At least '+fmt(kids+ad)+' people fed</p>'+
       '<a class="pbtn" href="#reports">How we report <span aria-hidden="true">&rarr;</span></a>'+
-      (p.date && p.date!==f.date ? '<p class="pnote" style="margin:14px 0 0">Photograph from '+esc(prettyDate(p.date))+'.</p>' : '')+'</div>';
+      (p.date && p.date!==f.date ? '<p class="pnote" style="margin:14px 0 0">Photograph from '+esc(prettyDate(p.date))+'.</p>'
+        : !p.date ? '<p class="pnote" style="margin:14px 0 0">The day this photograph was taken was not recorded.</p>' : '')+'</div>';
   } else {
     panel='<div class="panel"><p class="eyebrow">From the ground</p>'+
       (p.date?'<p class="prow">'+icon("cal")+'<span>'+esc(prettyDate(p.date))+'</span></p>':'')+

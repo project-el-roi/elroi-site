@@ -181,6 +181,18 @@
   },
   "photos": [
     {
+      "src": "photos/feeding-2026-sep-oct-a.jpg",
+      "caption": "Crowd waiting for food in the open, September to October 2026"
+    },
+    {
+      "src": "photos/feeding-2026-sep-oct-b.jpg",
+      "caption": "Serving from the cooking pots, September to October 2026"
+    },
+    {
+      "src": "photos/feeding-2026-sep-oct-c.jpg",
+      "caption": "Children eating, seated on the ground, September to October 2026"
+    },
+    {
       "src": "photos/feeding-2026-09-16-b.jpg",
       "caption": "Long line of children holding bowls",
       "date": "2026-09-16"
@@ -236,6 +248,41 @@
       "src": "photos/work-08.jpg",
       "caption": "Meals served, one bowl at a time",
       "alt": "Serving food from large pots into bowls"
+    },
+    {
+      "src": "photos/work-09.jpg",
+      "caption": "Beans sorted by hand before cooking",
+      "alt": "Three women sorting red beans on a blue tarpaulin"
+    },
+    {
+      "src": "photos/work-10.jpg",
+      "caption": "Beans on the fire",
+      "alt": "Large pot of beans boiling over a wood fire"
+    },
+    {
+      "src": "photos/work-11.jpg",
+      "caption": "Posho stirred in the pot",
+      "alt": "Two people stirring posho in a large pot over a fire"
+    },
+    {
+      "src": "photos/work-12.jpg",
+      "caption": "Served into bowls, one at a time",
+      "alt": "Women serving posho from a large pot into a bowl"
+    },
+    {
+      "src": "photos/work-13.jpg",
+      "caption": "Ready to serve",
+      "alt": "Women standing beside three large pots of food"
+    },
+    {
+      "src": "photos/work-14.jpg",
+      "caption": "Gathered before the meal",
+      "alt": "Large crowd seated on open ground under trees"
+    },
+    {
+      "src": "photos/work-15.jpg",
+      "caption": "A meal shared on the ground",
+      "alt": "Children seated on the ground eating from bowls"
     }
   ],
   "updated": "2026-10-19"
